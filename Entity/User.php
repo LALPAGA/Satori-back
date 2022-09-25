@@ -3,8 +3,9 @@
 namespace App\Entity;
 
 use App\Entity;
+use App\Override\Satori\Image\Imaged;
 
-class User extends Entity {
+class User extends Entity implements Imaged {
     /**
      * @Attribute(type="varchar", length="50", unique=true, not_null=true)
      */
@@ -19,11 +20,6 @@ class User extends Entity {
      * @Attribute(type="varchar", length="255", not_null=true)
      */
     private string $password;
-
-    /**
-     * @Attribute(type="text")
-     */
-    private string $image;
 
     /**
      * @Attribute(type="int", length="1")
@@ -96,26 +92,6 @@ class User extends Entity {
     public function checkPassword(string $plain_password): bool
     {
         return $this->password = md5($plain_password);
-    }
-
-    /**
-     * Get the value of image
-     */ 
-    public function getImage(): string
-    {
-        return $this->image;
-    }
-
-    /**
-     * Set the value of image
-     *
-     * @return self
-     */ 
-    public function setImage(string $image): User
-    {
-        $this->image = $image;
-
-        return $this;
     }
 
     /**

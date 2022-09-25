@@ -3,9 +3,9 @@
 namespace App\Entity;
 
 use App\Entity;
-use App\Override\Satori\Visibility;
+use App\Override\Satori\Image\Imaged;
 
-class Deck extends Entity {
+class Deck extends Entity implements Imaged{
     /**
      * @Attribute(type="varchar", length="255", not_null=true)
      */
@@ -15,11 +15,6 @@ class Deck extends Entity {
      * @Attribute(type="text")
      */
     private string $description;
-
-    /**
-     * @Attribute(type="text")
-     */
-    private string $image;
 
     /**
      * @Attribute(type="int", not_null=true)
@@ -32,7 +27,7 @@ class Deck extends Entity {
     private int $user_id;
 
     public static $table = 'deck';
-    
+
 
     /**
      * Get the value of title
@@ -70,26 +65,6 @@ class Deck extends Entity {
     public function setDescription(string $description): Deck
     {
         $this->description = $description;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of image
-     */ 
-    public function getImage(): string
-    {
-        return $this->image;
-    }
-
-    /**
-     * Set the value of image
-     *
-     * @return self
-     */ 
-    public function setImage(string $image): Deck
-    {
-        $this->image = $image;
 
         return $this;
     }
